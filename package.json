@@ -6,7 +6,7 @@
     "scripts": {
       "start": "node server.js"
     },
-    "author": "Christian Weston Chandler",
+    "author": "Seal Team 6",
     "license": "MIT",
     "dependencies": {
       "bcrypt": "5.1.1",
@@ -16,7 +16,6 @@
       "express-handlebars": "7.1.2",
       "express-session": "1.18.0",
       "handlebars": "4.7.8",
-      "mysql2": "3.9.9",
-      "sequelize": "6.37.3"
+      "mongodb": "6.7.0"
     }
   }
