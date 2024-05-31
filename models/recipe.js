@@ -25,4 +25,14 @@ Recipe
 .then(result => console.log('Created a new recipe', result))
 .catch(err => handleError(err));
 
+Recipe
+.create({
+    title: 'Peanut Butter and Jelly',
+    ingredients: 'Bread, Peanut Butter, Jelly',
+    instructions: 'Spread Peanut Butter and Jelly on two slices of bread, then combine',
+})
+.then(result => console.log('Created a new recipe', result))
+.catch(err => handleError(err));
+
 module.exports = Recipe;
+
