@@ -31,15 +31,11 @@ const handleSubmit = async (e) => {
    //give me a basic form to start with
     <div className="App">
       <header className="App-header">
-        <h1>Simple Form</h1>
+        <h1>Recipe App</h1>
         <form>
           <label>
-            Name:
-            <input type="text" name="name" />
-          </label>
-          <label>
             Email:
-            <input type="text" name="email" />
+            <input type="text" name="password" />
           </label>
           <label>
             Password:
@@ -49,7 +45,7 @@ const handleSubmit = async (e) => {
         </form>
       </header>
     </div>
-  );
+  )
 }
 
 export default App;
