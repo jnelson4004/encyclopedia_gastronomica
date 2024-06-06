@@ -1,15 +1,25 @@
+const User = require('./models/User');
 const express = require('express');
 const db = require('./config/connection');
 // Require model
 const { Recipe } = require('./models');
-
+const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+//app.use(routes);
+app.post('/signup', async function (req, res) {
+ console.log("hi");
+  var first = "eddie";
+ var last = "montoya";
+var email = "dfafd@gmail.com";
+var password = "123";
+  await User.create([{first: 'eddie', last: 'montoya', email: 'eddie', password: 'montoya'}])
+  
+});
 app.get('/all-recipes', async (req, res) => {
   try {
     // Using model in route
