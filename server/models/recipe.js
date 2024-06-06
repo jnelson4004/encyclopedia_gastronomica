@@ -7,8 +7,14 @@ const recipeSchema = new mongoose.Schema({
     title: { type: String, required: true },
     ingredients: { type: String, required: true },
     instructions: { type: String, required: true },
-    lastAccessed: { type: Date, default: Date.now},
-});
+},
+{
+    toJSON: {
+        virtuals: true,
+            },
+            id: false,
+}
+);
 
 // Using mongoose.model() to compile a model based on the schema 'recipeSchema'
 const Recipe = mongoose.model('Recipe', recipeSchema);
