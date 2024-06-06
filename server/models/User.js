@@ -8,10 +8,10 @@ const userSchema = new Schema(
         last: String,
         email: String,
         password: String,
-        recipes: [{
-            type: Schema.Types.ObjectId,
-            ref: 'recipe'
-        }]
+        // recipes: [{
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'recipe'
+        
     },
     {
         
