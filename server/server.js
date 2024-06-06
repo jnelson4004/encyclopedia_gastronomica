@@ -1,7 +1,10 @@
+const User = require('./models/User');
 const express = require('express');
 const db = require('./config/connection');
 // Require model
 const { Recipe } = require('./models');
+
+const routes = require('./routes');
 const userRoutes = require('./controllers/user.Controller');
 const recipeRoutes = require('./controllers/recipe.Controller');
 const commentRoutes = require('./controllers/comment.Controller');
@@ -12,6 +15,18 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//app.use(routes);
+app.post('/signup', async function (req, res) {
+ console.log("hi");
+  var first = "eddie";
+ var last = "montoya";
+var email = "dfafd@gmail.com";
+var password = "123";
+  await User.create([{first: 'eddie', last: 'montoya', email: 'eddie', password: 'montoya'}])
+  
+});
+
 // app.use(express.static(path.join(__dirname, 'users')));
 
 app.get('/users', userRoutes.getUsers);
@@ -25,6 +40,7 @@ app.post('/recipes', recipeRoutes.createRecipe);
 app.get('/comments', commentRoutes.getComments);
 app.get('/comments/:commentId', commentRoutes.getSingleComment);
 app.post('/comments', commentRoutes.createComment);
+
 
 app.get('/all-recipes', async (req, res) => {
   try {
