@@ -7,7 +7,7 @@ const { Recipe } = require('./models');
 const routes = require('./routes');
 const userRoutes = require('./controllers/user.Controller');
 const recipeRoutes = require('./controllers/recipe.Controller');
-const commentRoutes = require('./controllers/comments.Controller');
+const commentRoutes = require('./controllers/comments.controller');
 
 
 const PORT = process.env.PORT || 3001;
