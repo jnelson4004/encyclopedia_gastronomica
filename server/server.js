@@ -8,7 +8,7 @@ const userRoutes = require('./controllers/user.Controller');
 const recipeRoutes = require('./controllers/recipe.Controller');
 const commentsRoutes = require('./controllers/comments.Controller');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 10000;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
