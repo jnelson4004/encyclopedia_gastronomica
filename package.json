@@ -1,0 +1,21 @@
+{
+    "name": "encyclopedia_gastronomica",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
+      "start": "npm run build && cd server && node server.js",
+      "server": "cd server nodemon server.js --ignore client",
+      "build": "cd client && npm run build",
+      "install": "cd server && npm i && cd ../client && npm i",
+      "client": "cd client && npm start"
+    },
+    "keywords": [],
+    "author": "Seal Team 6",
+    "license": "MIT",
+    "dependencies": {
+        "concurrently": "^5.2.0"
+    }
+}
+  
