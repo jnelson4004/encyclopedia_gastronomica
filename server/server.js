@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const db = require('./config/connection');
 // Require model
 const { Recipe, User, Comments } = require('./models');
@@ -8,7 +9,7 @@ const userRoutes = require('./controllers/user.Controller');
 const recipeRoutes = require('./controllers/recipe.Controller');
 const commentsRoutes = require('./controllers/comments.Controller');
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +27,7 @@ var password = "123";
   
 });
 
-// app.use(express.static(path.join(__dirname, 'users')));
+app.use(express.static(path.join(__dirname, 'users')));
 
 app.get('/users', userRoutes.getUsers);
 app.get('/users/:userId', userRoutes.getSingleUser);
