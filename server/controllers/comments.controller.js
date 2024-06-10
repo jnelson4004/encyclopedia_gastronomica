@@ -1,9 +1,10 @@
-const comment = require('../models/comments');
+const { Comments } = require('../models');
+// const userController = require('./user.Controller');
 
-module.exports = {
+const commentsController = {
     async getComments(req, res) {
         try {
-            const comments = await comment.find();
+            const comments = await Comments.find();
             res.json(comments);
         } catch (err) {
             res.status(500).json(err);
@@ -12,7 +13,7 @@ module.exports = {
 
     async getSingleComment(req, res) {
         try {
-            const commentData = await comment.findOne({ _id: req.params.commentId });
+            const commentData = await Comments.findOne({ _id: req.params.commentId });
 
             if (!commentData) {
                 return res.status(404).json({ message: 'No comment with that ID' });
@@ -26,10 +27,12 @@ module.exports = {
 
     async createComment(req, res) {
         try {
-            const dbCommentData = await comment.create(req.body);
+            const dbCommentData = await Comments.create(req.body);
             res.json(dbCommentData);
         } catch (err) {
             res.status(500).json(err);
         }
     },
 };
+
+module.exports = commentsController;

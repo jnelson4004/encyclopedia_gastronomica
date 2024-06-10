@@ -1,13 +1,12 @@
-const User = require('./models/User');
 const express = require('express');
 const db = require('./config/connection');
 // Require model
-const { Recipe } = require('./models');
+const { Recipe, User, Comments } = require('./models');
 
 const routes = require('./routes');
 const userRoutes = require('./controllers/user.Controller');
 const recipeRoutes = require('./controllers/recipe.Controller');
-const commentRoutes = require('./controllers/comment.Controller');
+const commentsRoutes = require('./controllers/comments.Controller');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -37,9 +36,9 @@ app.get('/recipes', recipeRoutes.getRecipes);
 app.get('/recipes/:recipeId', recipeRoutes.getSingleRecipe);
 app.post('/recipes', recipeRoutes.createRecipe);
 
-app.get('/comments', commentRoutes.getComments);
-app.get('/comments/:commentId', commentRoutes.getSingleComment);
-app.post('/comments', commentRoutes.createComment);
+app.get('/comments', commentsRoutes.getComments);
+app.get('/comments/:commentId', commentsRoutes.getSingleComment);
+app.post('/comments', commentsRoutes.createComment);
 
 
 app.get('/all-recipes', async (req, res) => {

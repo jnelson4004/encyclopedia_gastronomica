@@ -20,11 +20,11 @@ const commentSchema = new mongoose.Schema({
     id: false,
 });
 
-const Comment = mongoose.model('Comment', commentSchema);
+const Comments = mongoose.model('Comment', commentSchema);
 
 const handleError = (err) => console.error(err);
 
-Comment
+Comments
 .create({
     text: 'This recipe is great!',
     user: '',
