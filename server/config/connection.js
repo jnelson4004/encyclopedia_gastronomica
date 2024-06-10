@@ -13,3 +13,7 @@ mongoose.connect(MONGODB_URI, {
 });
 
 module.exports = mongoose.connection;
+
+// BxjBCMlWzThTqD8k
+
+// mongodb+srv://jnelson4004:BxjBCMlWzThTqD8k@cluster0.kpl1r2r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
