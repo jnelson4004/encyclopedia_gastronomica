@@ -1,17 +1,21 @@
-const connection = require('../../config/connection');
-const router = require('express').Router();
-const {
-createUser,
-getUsers,
-getSingleUser,
-} = require('../../controllers/user.Controller.js');
+const router = require("express").Router();
+const { createUser, getUsers, getSingleUser } = require("../../controllers/user.Controller");
 
-router.get('/').get(getUsers).post(createUser);
+// get all users
+// /api/users/
+router.route("/").get(getUsers)
 
-router.get('/:userId').get(getSingleUser);
+// get one user
+// /api/users/:userId
+router.route("/:userId").get(getSingleUser);
 
-router.post('/signup',function (first, last, email, password) {
-    User.createUser(first, last, email, password)}
-);
+// create a user
+// /api/users/signup
+router.route("/signup").post(createUser);
+
+// login a user
+// // /api/users/login
+// // method loginUser does not exist
+// router.route("/login").post(loginUser);
 
 module.exports = router;

@@ -1,44 +1,38 @@
 //Require schema and model from mongoose
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-// Construct a new instance of the schema class
-const recipeSchema = new mongoose.Schema({
+// Construct a new instance of the schema
+const recipeSchema = new mongoose.Schema(
+  {
     // Configure individual properties using Schema Types
-    title: { type: String, required: true },
-    ingredients: { type: String, required: true },
-    instructions: { type: String, required: true },
-},
-{
+    title: {
+      type: String,
+      required: true,
+    },
+    ingredients: {
+      type: String,
+      required: true,
+    },
+    instructions: {
+      type: String,
+      required: true,
+    },
+    // Associate the recipe with a user
+    users: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  {
     toJSON: {
-        virtuals: true,
-            },
-            id: false,
-}
+      virtuals: true,
+    },
+    id: false,
+  },
 );
 
 // Using mongoose.model() to compile a model based on the schema 'recipeSchema'
-const Recipe = mongoose.model('Recipe', recipeSchema);
-
-const handleError = (err) => console.error(err);
-
-// Create a new instance of the model, a recipe document
-Recipe
-.create({
-    title: 'Pizza',
-    ingredients: 'Pizza dough, tomato sauce, cheese',
-    instructions: 'Mix ingredients, bake',
-})
-.then(result => console.log('Created a new recipe', result))
-.catch(err => handleError(err));
-
-Recipe
-.create({
-    title: 'Peanut Butter and Jelly',
-    ingredients: 'Bread, Peanut Butter, Jelly',
-    instructions: 'Spread Peanut Butter and Jelly on two slices of bread, then combine',
-})
-.then(result => console.log('Created a new recipe', result))
-.catch(err => handleError(err));
+const Recipe = mongoose.model("Recipe", recipeSchema);
 
 module.exports = Recipe;
-
