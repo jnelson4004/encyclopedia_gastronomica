@@ -33,4 +33,4 @@ Comment
 .then(result => console.log('Created a new comment', result))
 .catch(err => handleError(err));
 
-module.exports = Comments;
+module.exports = Comment;

@@ -21,7 +21,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-  aasync creteUser(req, res) {
+  async createUser(req, res) {
     try {
       const dbUserData = await User.create(req.body);
       res.json(dbUserData);
