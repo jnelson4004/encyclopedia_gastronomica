@@ -1,42 +1,60 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-//Sxhema to create a user model
+//Schema to create a user
 
 const userSchema = new Schema(
-    {
-        first: String,
-        last: String,
-        email: String,
-        password: String,
-        // recipes: [{
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'recipe'
-        
+  {
+    first: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    {
-        
-        // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
-        toJSON: {
-    virtuals: true,
-        },
-        id: false,
-}
-    );
+    last: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 1,
+    },
+    recipes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Recipe",
+      },
+    ],
+  },
+  {
+    // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  },
+);
 
-    // Create a a vitual propery othat gets the ammont of comments per user
-    userSchema.virtual('fullName')
-    // Getter
-    .get(function () {
-        return `${this.first} ${this.last}`;
-    })
-    // stter to se the first and last name
-    .set(function (v) {
-        const first = v.split(' ')[0];
-        const last = v.split(' ')[1];
-        this.set({ first, last });
-    });
+// Create a a vitual propery othat gets the ammont of comments per user
+userSchema
+  .virtual("fullName")
+  // Getter
+  .get(function () {
+    return `${this.first} ${this.last}`;
+  })
+  // stter to se the first and last name
+  .set(function (v) {
+    const first = v.split(" ")[0];
+    const last = v.split(" ")[1];
+    this.set({ first, last });
+  });
 
-      //initialiaze user model
-    const User = model('user', userSchema);
+//initialiaze user model
+const User = model("user", userSchema);
 
-    module.exports = User;
+module.exports = User;
