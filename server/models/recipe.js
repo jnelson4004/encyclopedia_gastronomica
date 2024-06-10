@@ -1,6 +1,6 @@
 //Require schema and model from mongoose
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+// const { Schema } = mongoose;
 
 // Construct a new instance of the schema
 const recipeSchema = new mongoose.Schema(
@@ -20,7 +20,7 @@ const recipeSchema = new mongoose.Schema(
     },
     // Associate the recipe with a user
     users: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   },

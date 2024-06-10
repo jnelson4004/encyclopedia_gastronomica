@@ -1,13 +1,15 @@
-//define axios
-import axios from 'axios';
-import React, { useState } from 'react';
 import './App.css';
+//define axios
+const axios = require('axios');
+const { useState } = require('react');
+// import React, { useState } from 'react';
+
 
 function App() {
 //write staate for that from 
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
+const [name] = useState("");
+const [email] = useState("");
+const [password] = useState("");
 
 
 //example API call with axios 

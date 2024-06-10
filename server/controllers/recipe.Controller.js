@@ -1,4 +1,5 @@
 const { Recipe } = require("../models");
+
 const recipeController = {
   async getRecipes(req, res) {
     try {

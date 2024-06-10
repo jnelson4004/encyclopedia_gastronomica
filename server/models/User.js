@@ -1,8 +1,8 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
 //Schema to create a user
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     first: {
       type: String,
@@ -26,7 +26,7 @@ const userSchema = new Schema(
     },
     recipes: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe",
       },
     ],
@@ -55,6 +55,6 @@ userSchema
   });
 
 //initialiaze user model
-const User = model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

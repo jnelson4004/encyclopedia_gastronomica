@@ -24,11 +24,10 @@ const Comments = mongoose.model('Comment', commentSchema);
 
 const handleError = (err) => console.error(err);
 
-Comments
-.create({
+Comments.create({
     text: 'This recipe is great!',
-    user: '',
-    recipe: '',
+    user: '66610391555f93a26a6cc8fc',
+    recipe: '665fd9016818306573324fc4',
 })
 .then(result => console.log('Created a new comment', result))
 .catch(err => handleError(err));
