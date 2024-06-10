@@ -27,7 +27,7 @@ app.use(routes);
   
 // });
 
-app.use(express.static(path.join(__dirname, 'users')));
+// app.use(express.static(path.join(__dirname, 'users')));
 
 app.get('/users', userRoutes.getUsers);
 app.get('/users/:userId', userRoutes.getSingleUser);
@@ -61,6 +61,15 @@ app.post('/comments', commentsRoutes.createComment);
 //     res.status(500).send({ message: "Internal Server Error" });
 //   }
 // });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+};
+
 
 db.once("open", () => {
   app.listen(PORT, () => {
